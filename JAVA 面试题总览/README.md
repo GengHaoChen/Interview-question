@@ -549,7 +549,7 @@
     * system
         * 类加载器通常是从CLASSPATH环境变量的内容初始化的.所有这些类对于tomcat内部类和web应用程序都是可见的.但是,标准Tomcat启动脚本($CATALINA_HOME/bin/catalina.sh或%CATALINA_HOME%\bin\catalina.bat)完全忽略了CLASSPATH环境变量本身的内容,而是从以下存储库构建System类加载器
             * $CATALINA_HOME/bin/bootstrap.jar - 包含用于初始化Tomcat服务器的main()方法以及它依赖的类加载器实现类.
-            * $CATALINA_BASE/bin/tomcat-juli.jar或$CATALINA_HOME/bin/tomcat-juli.jar - 记录实现类。其中包括java.util.loggingAPI的增强类(称为Tomcat JULI)和Tomcat内部使用的Apache Commons Logging库的软件包重命名副本.如果tomcat-juli.jar存在于$CATALINA_BASE/bin中,则使用它而不是$CATALINA_HOME/bin中的一个
+            * $CATALINA_BASE/bin/tomcat-juli.jar或$CATALINA_HOME/bin/tomcat-juli.jar - 记录实现类.其中包括java.util.loggingAPI的增强类(称为Tomcat JULI)和Tomcat内部使用的Apache Commons Logging库的软件包重命名副本.如果tomcat-juli.jar存在于$CATALINA_BASE/bin中,则使用它而不是$CATALINA_HOME/bin中的一个
             * $CATALINA_HOME/bin/commons-daemon.jar - Apache Commons Daemon项目中的类.这个JAR文件不存在于CLASSPATH由catalina.bat|构建的 .sh脚本,但是从bootstrap.jar的清单文件引用
     * common
         * 类加载器包含额外的类,这些类对于tomcat内部类和所有Web应用程序都是可见的,这个类加载器搜索的位置由common.loader$CATALINA_BASE/conf/catalina.properties中的属性定义.默认设置将按照它们列出的顺序搜索以下位置
@@ -564,7 +564,7 @@
             * catalina-ha.jar - 高可用性软件包
             * catalina-storeconfig.jar - 从当前状态生成XML配置文件
             * catalina-tribes.jar - 分布式交流包
-            * ecj - *。jar - Eclipse JDT Java编译器
+            * ecj - *.jar - Eclipse JDT Java编译器
             * el-api.jar - EL 3.0 API
             * jasper.jar - Tomcat Jasper JSP编译器运行时
             * jasper-el.jar - Tomcat Jasper EL实现
@@ -573,7 +573,7 @@
             * tomcat-api.jar - 由Tomcat定义的几个接口
             * tomcat-coyote.jar - Tomcat连接器和实用程序类
             * tomcat-dbcp.jar - 基于Apache Commons Pool和Apache Commons DBCP的软件包重命名副本的数据库连接池实现.
-            * tomcat-i18n - **。jar - 包含其他语言资源包的可选JAR.由于默认捆绑包也包含在每个单独的JAR中,因此如果不需要国际化消息,则可以安全地删除它们
+            * tomcat-i18n - **.jar - 包含其他语言资源包的可选JAR.由于默认捆绑包也包含在每个单独的JAR中,因此如果不需要国际化消息,则可以安全地删除它们
             * tomcat-jdbc.jar - 另一个数据库连接池实现,称为Tomcat JDBC池
             * tomcat-util.jar - Apache Tomcat各种组件使用的公共类
             * tomcat-websocket.jar - WebSocket 1.1实现
@@ -587,7 +587,7 @@
     * maxSpareThreads:最大备用线程数,一旦创建的线程超过这个值,Tomcat 就会关闭不再需要的 socket 线程
     * URIEncoding:指定 Tomcat 容器的 URL 编码格式,语言编码格式这块倒不如其它 WEB 服务器软件配置方便,需要分别指定
     * connectionTimeout:网络连接超时,单位:毫秒,设置为 0 表示永不超时,这样设置有隐患的.通常可设置为 30000 毫秒,可根据检测实际情况,适当修改
-    * enableLookups:是否反查域名,以返回远程主机的主机名,取值为:true 或 false,如果设置为false,则直接返回IP地址,为了提高处理能力,应设置为 false。
+    * enableLookups:是否反查域名,以返回远程主机的主机名,取值为:true 或 false,如果设置为false,则直接返回IP地址,为了提高处理能力,应设置为 false.
     * disableUploadTimeout:上传时是否使用超时机制
     * connectionUploadTimeout:上传超时时间,毕竟文件上传可能需要消耗更多的时间,这个根据你自己的业务需要自己调,以使Servlet有较长的时间来完成它的执行,需要与上一个参数一起配合使用才会生效
     * acceptCount:指定当所有可以使用的处理请求的线程数都被使用时,可传入连接请求的最大队列长度,超过这个数的请求将不予处理,默认为100个
@@ -691,7 +691,7 @@
 * net.ipv4.tcp_max_syn_backlog
     * Tcp syn队列的最大长度,在进行系统调用connect时会发生Tcp的三次握手,server内核会为Tcp维护两个队列,Syn队列和Accept队列,Syn队列是指存放完成第一次握手的连接,Accept队列是存放完成整个Tcp三次握手的连接,修改net.ipv4.tcp_max_syn_backlog使之增大可以接受更多的网络连接 
 * net.ipv4.tcp_synack_retries
-    * tcp_synack_retries 显示或设定 Linux 核心在回应 SYN 要求时会尝试多少次重新发送初始 SYN,ACK 封包后才决定放弃.这是所谓的三段交握的第二个步骤.即是说系统会尝试多少次去建立由远端启始的 TCP 连线。tcp_synack_retries 的值必须为正整数,并不能超过 255.因为每一次重新发送封包都会耗费约 30 至 40 秒去等待才决定尝试下一次重新发送或决定放弃.tcp_synack_retries 的缺省值为 5,即每一个连线要在约180秒后才确定超时
+    * tcp_synack_retries 显示或设定 Linux 核心在回应 SYN 要求时会尝试多少次重新发送初始 SYN,ACK 封包后才决定放弃.这是所谓的三段交握的第二个步骤.即是说系统会尝试多少次去建立由远端启始的 TCP 连线.tcp_synack_retries 的值必须为正整数,并不能超过 255.因为每一次重新发送封包都会耗费约 30 至 40 秒去等待才决定尝试下一次重新发送或决定放弃.tcp_synack_retries 的缺省值为 5,即每一个连线要在约180秒后才确定超时
 * net.ipv6.conf.all.disable_ipv6
     * 设置启动关闭ipv6
 * net.ipv6.conf.default.disable_ipv6
@@ -709,7 +709,7 @@
 * 阻塞IO(bloking IO)
     * 在这个IO模型中,用户空间的应用程序执行一个系统调用(recvform),这会导致应用程序阻塞,什么也不干,直到数据准备好,并且将数据从内核复制到用户进程,最后进程再处理数据,在等待数据到处理数据的两个阶段,整个进程都被阻塞.不能处理别的网络IO
 * 非阻塞IO(non-blocking IO)
-    * 非阻塞IO也会进行recvform系统调用,检查数据是否准备好,与阻塞IO不一样,非阻塞将大的整片时间的阻塞分成N多的小的阻塞,也就是说非阻塞的recvform系统调用调用之后,进程并没有被阻塞,内核马上返回给进程,如果数据还没准备好,此时会返回一个error。进程在返回之后,可以干点别的事情,然后再发起recvform系统调用.重复上面的过程,循环往复的进行recvform系统调用.这个过程通常被称之为轮询.轮询检查内核数据,直到数据准备好,再拷贝数据到进程,进行数据处理
+    * 非阻塞IO也会进行recvform系统调用,检查数据是否准备好,与阻塞IO不一样,非阻塞将大的整片时间的阻塞分成N多的小的阻塞,也就是说非阻塞的recvform系统调用调用之后,进程并没有被阻塞,内核马上返回给进程,如果数据还没准备好,此时会返回一个error.进程在返回之后,可以干点别的事情,然后再发起recvform系统调用.重复上面的过程,循环往复的进行recvform系统调用.这个过程通常被称之为轮询.轮询检查内核数据,直到数据准备好,再拷贝数据到进程,进行数据处理
 * 多路复用IO(multiplexing IO)
     * 由于同步非阻塞方式需要不断主动轮询,轮询占据了很大一部分过程,轮询会消耗大量的CPU时间而后台可能有多个任务在同时进行,循环查询多个任务的完成状态,只要有任何一个任务完成,就去处理它
 * 信号驱动式IO(signal-driven IO)
@@ -764,7 +764,7 @@
     * 禁止进行指令重排序
 * 能代替锁么
     * 不能
-    * volatile变量具有 synchronized 的可见性特性,但是不具备原子特性。这就是说线程能够自动发现 volatile变量的最新值
+    * volatile变量具有 synchronized 的可见性特性,但是不具备原子特性.这就是说线程能够自动发现 volatile变量的最新值
     * volatile作用于多个变量之间或者某个变量的当前值与修改后值之间没有约束
     * 单独使用 volatile 还不足以实现计数器、互斥锁
 
@@ -850,7 +850,7 @@
 * atomicLong
 * 原理
     * 利用CPU的CAS指令
-    * 它包含3个参数CAS(V,E,N)。V表示要更新的变量,E表示预期值,N表示新值。仅当V值等于E值时,才会将V的值设为N,如果V值和E值不同,则说明已经有其他线程做了更新,则当前线程什么都不做。最后,CAS返回当前V的真实值
+    * 它包含3个参数CAS(V,E,N).V表示要更新的变量,E表示预期值,N表示新值.仅当V值等于E值时,才会将V的值设为N,如果V值和E值不同,则说明已经有其他线程做了更新,则当前线程什么都不做.最后,CAS返回当前V的真实值
     
 #### 8.用过线程池吗,newCache 和 newFixed 有什么区别,他们的原理简单概括下,构造函数的各个参数的含义是什么,比如 coreSize,maxsize 等
 * newFixedThreadPool
@@ -858,13 +858,13 @@
 * newCachedThreadPool
     * 创建一个可缓存的线程池.如果线程池的大小超过了处理任务所需要的线程,那么就会回收部分空闲的线程.当任务数增加时.此线程池又可以智能的添加新线程来处理任务.此线程池不会对线程池大小做限制,线程池大小完全依赖于操作系统能够创建的最大线程大小
 * ThreadPoolExecutor构造函数
-    * corePoolSize - 池中所保存的线程数,包括空闲线程。
-    * maximumPoolSize - 池中允许的最大线程数。
-    * keepAliveTime - 当线程数大于核心时,此为终止前多余的空闲线程等待新任务的最长时间。
-    * unit - keepAliveTime 参数的时间单位。
-    * workQueue - 执行前用于保持任务的队列。此队列仅保持由 execute 方法提交的 Runnable 任务。
-    * threadFactory - 执行程序创建新线程时使用的工厂。
-    * handler - 由于超出线程范围和队列容量而使执行被阻塞时所使用的处理程序。
+    * corePoolSize - 池中所保存的线程数,包括空闲线程.
+    * maximumPoolSize - 池中允许的最大线程数.
+    * keepAliveTime - 当线程数大于核心时,此为终止前多余的空闲线程等待新任务的最长时间.
+    * unit - keepAliveTime 参数的时间单位.
+    * workQueue - 执行前用于保持任务的队列.此队列仅保持由 execute 方法提交的 Runnable 任务.
+    * threadFactory - 执行程序创建新线程时使用的工厂.
+    * handler - 由于超出线程范围和队列容量而使执行被阻塞时所使用的处理程序.
 
 #### 9.线程池的关闭方式有几种,各自的区别是什么
 * shutdown
@@ -880,7 +880,7 @@
     2. 到达超时时间
     
 #### 10.假如有一个第三方接口,有很多个线程去调用获取数据,现在规定每秒钟最多有 10 个线程同时调用它,如何做到
-* Semaphore类,在许可可用前会阻塞每一个 acquire(),然后再获取该许可。每个 release() 添加一个许可,从而可能释放一个正在阻塞的获取者
+* Semaphore类,在许可可用前会阻塞每一个 acquire(),然后再获取该许可.每个 release() 添加一个许可,从而可能释放一个正在阻塞的获取者
 
 #### 11.spring 的 controller 是单例还是多例,怎么保证并发的安全
 * 单例还是多例
@@ -965,14 +965,14 @@ public class PrintABC {
 * AtomicLong
 * 原理
     * 利用CPU的CAS指令
-    * 它包含3个参数CAS(V,E,N)。V表示要更新的变量,E表示预期值,N表示新值。仅当V值等于E值时,才会将V的值设为N,如果V值和E值不同,则说明已经有其他线程做了更新,则当前线程什么都不做。最后,CAS返回当前V的真实值
+    * 它包含3个参数CAS(V,E,N).V表示要更新的变量,E表示预期值,N表示新值.仅当V值等于E值时,才会将V的值设为N,如果V值和E值不同,则说明已经有其他线程做了更新,则当前线程什么都不做.最后,CAS返回当前V的真实值
     
 #### 16.讲讲 java 同步机制的 wait 和 notify
 * wait
     * 在其他线程调用此对象的 notify() 方法或 notifyAll() 方法前,导致当前线程等待
     * 当前线程必须拥有此对象的锁.该线程发布对此锁的所有权并等待,直到其他线程通过调用 notify 方法,或 notifyAll 方法通知在此对象的监视器上等待的线程醒来.然后该线程将等到重新获得对监视器的所有权后才能继续执行
 * notify
-    * 唤醒在此对象的锁上等待的单个线程.如果所有线程都在此对象上等待,则会选择唤醒其中一个线程.选择是任意性的,并在对实现做出决定时发生。线程通过调用其中一个 wait 方法,在对象的锁上等待
+    * 唤醒在此对象的锁上等待的单个线程.如果所有线程都在此对象上等待,则会选择唤醒其中一个线程.选择是任意性的,并在对实现做出决定时发生.线程通过调用其中一个 wait 方法,在对象的锁上等待
     * 直到当前线程放弃此对象上的锁定,才能继续执行被唤醒的线程.被唤醒的线程将以常规方式与在该对象上主动同步的其他所有线程进行竞争;例如,唤醒的线程在作为锁定此对象的下一个线程方面没有可靠的特权或劣势
     * 此方法只应由作为此对象的锁的所有者的线程来调用.通过以下三种方法之一,线程可以成为此对象锁的所有者:
         * 通过执行此对象的同步实例方法
@@ -997,7 +997,7 @@ public class PrintABC {
 * Synchronized修饰非静态方法,实际上是对调用该方法的对象加锁
     * 情况1
         * 同一个对象在两个线程中分别访问该对象的两个同步方法
-        * 结果:会产生互斥。
+        * 结果:会产生互斥.
         * 解释:因为锁针对的是对象,当对象调用一个synchronized方法时,其他同步方法需要等待其执行结束并释放锁后才能执行
 
     * 情况2
@@ -1008,18 +1008,18 @@ public class PrintABC {
 * Synchronized修饰静态方法,实际上是对该类对象加锁
     * 情况1
         * 用类直接在两个线程中调用两个不同的同步方法
-        * 结果:会产生互斥。
-        * 解释:因为对静态对象加锁实际上对类（.class）加锁,类对象只有一个,可以理解为任何时候都只有一个空间,里面有N个房间,一把锁,因此房间（同步方法）之间一定是互斥的。
+        * 结果:会产生互斥.
+        * 解释:因为对静态对象加锁实际上对类（.class）加锁,类对象只有一个,可以理解为任何时候都只有一个空间,里面有N个房间,一把锁,因此房间（同步方法）之间一定是互斥的.
     
     * 情况2
         * 用一个类的静态对象在两个线程中调用静态方法或非静态方法
-        * 结果:会产生互斥。
-        * 解释:因为是一个对象调用,同上。
+        * 结果:会产生互斥.
+        * 解释:因为是一个对象调用,同上.
     
     * 情况3
         * 一个对象在两个线程中分别调用一个静态同步方法和一个非静态同步方法
         * 结果:不会产生互斥
-        * 解释:因为虽然是一个对象调用,但是两个方法的锁类型不同,调用的静态方法实际上是类对象在调用,即这两个方法产生的并不是同一个对象锁,因此不会互斥,会并发执行。
+        * 解释:因为虽然是一个对象调用,但是两个方法的锁类型不同,调用的静态方法实际上是类对象在调用,即这两个方法产生的并不是同一个对象锁,因此不会互斥,会并发执行.
         
 #### 20.简述 ConcurrentLinkedQueue 和 LinkedBlockingQueue 的用处和不同之处
 * ConcurrentLinkedQueue
@@ -1143,7 +1143,7 @@ public class PrintABC {
 #### 21.异步模式的用途和意义
 #### 22.缓存数据过期后的更新如何设计
 #### 23.编程中自己都怎么考虑一些设计原则的,比如开闭原则,以及在工作中的应用
-#### 24.设计一个社交网站中的“私信”功能,要求高并发、可扩展等等。 画一下架构图
+#### 24.设计一个社交网站中的“私信”功能,要求高并发、可扩展等等. 画一下架构图
 #### 25.MVC 模式,即常见的 MVC 框架
 #### 26.聊了下曾经参与设计的服务器架构
 #### 27.应用服务器怎么监控性能,各种方式的区别
@@ -1171,7 +1171,7 @@ public class PrintABC {
         * 阶段 2: Discovery (发现阶段)
             * followers 跟准 leader 进行通信,同步 followers 最近接收的事务提议.这个一阶段的主要目的是发现当前大多数节点接收的最新提议,并且准 leader 生成新的 epoch,让 followers 接受,更新它们的 acceptedEpoch
         * 阶段 3: Synchronization (同步阶段)
-            * 同步阶段主要是利用 leader 前一阶段获得的最新提议历史,同步集群中所有的副本。只有当 quorum 都同步完成,准 leader 才会成为真正的 leader。follower 只会接收 zxid 比自己的 last Zxid 大的提议
+            * 同步阶段主要是利用 leader 前一阶段获得的最新提议历史,同步集群中所有的副本.只有当 quorum 都同步完成,准 leader 才会成为真正的 leader.follower 只会接收 zxid 比自己的 last Zxid 大的提议
         * 阶段 4: Broadcast (广播阶段)
             * 到了这个阶段,Zookeeper 集群才能正式对外提供事务服务,并且 leader 可以进行消息广播.同时如果有新的节点加入,还需要对新节点进行同步
         * Recovery Phase (恢复阶段)
@@ -1218,7 +1218,7 @@ public class PrintABC {
 #### 5.遍历二叉树
 #### 6.有 3n+1 个数字,其中 3n 个中是重复的,只有 1 个是不重复的,怎么找出来
 #### 7.写一个字符串反转函数
-#### 8.常用的排序算法,快排,归并、冒泡。 快排的最优时间复杂度,最差复杂度。冒泡排序的优化方案
+#### 8.常用的排序算法,快排,归并、冒泡. 快排的最优时间复杂度,最差复杂度.冒泡排序的优化方案
 #### 9.二分查找的时间复杂度,优势
 #### 10.一个已经构建好的 TreeSet,怎么完成倒排序
 #### 11.什么是 B+树,B-树,列出实际的使用场景
@@ -1387,8 +1387,8 @@ public class PrintABC {
 #### 2.MQ 系统的数据如何保证不丢失
 #### 3.rabbitmq 如何实现集群高可用
 * 集群模式
-    * 单一模式: 最简单的情况,非集群模式。
-    * 普通模式: 默认的集群模式。
+    * 单一模式: 最简单的情况,非集群模式.
+    * 普通模式: 默认的集群模式.
       *　对于 Queue 来说,消息实体只存在于其中一个节点,A、B 两个节点仅有相同的元数据,即队列结构.
       * 当消息进入 A 节点的 Queue 中后,consumer 从 B 节点拉取时,RabbitMQ 会临时在 A、B 间进行消息传输,把 A 中的消息实体取出并经过 B 发送给 consumer. 所以 consumer 应尽量连接每一个节点,从中取消息
       * 对于同一个逻辑队列,要在多个节点建立物理 Queue.否则无论 consumer 连 A 或 B,出口总在 A,会产生瓶颈.该模式存在一个问题就是当 A 节点故障后,B 节点无法取到 A 节点中还未消费的消息实体.如果做了消息持久化,那么得等 A 节点恢复,然后才可被消费
@@ -1415,11 +1415,11 @@ public class PrintABC {
 ## Redis,Memcached
 #### 1.redis 的 list 结构相关的操作
 1.	BLPOP key1 [key2 ] timeout
-    * 移出并获取列表的第一个元素, 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。
+    * 移出并获取列表的第一个元素, 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止.
 2.	BRPOP key1 [key2 ] timeout
-    * 移出并获取列表的最后一个元素, 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。
+    * 移出并获取列表的最后一个元素, 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止.
 3.	BRPOPLPUSH source destination timeout
-    * 从列表中弹出一个值,将弹出的元素插入到另外一个列表中并返回它； 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。
+    * 从列表中弹出一个值,将弹出的元素插入到另外一个列表中并返回它； 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止.
 4.	LINDEX key index
     * 通过索引获取列表中的元素
 5.	LINSERT key BEFORE|AFTER pivot value
@@ -1439,7 +1439,7 @@ public class PrintABC {
 12.	LSET key index value
     * 通过索引设置列表元素的值
 13.	LTRIM key start stop 
-    * 对一个列表进行修剪(trim),就是说,让列表只保留指定区间内的元素,不在指定区间之内的元素都将被删除。
+    * 对一个列表进行修剪(trim),就是说,让列表只保留指定区间内的元素,不在指定区间之内的元素都将被删除.
 14.	RPOP key
     * 移除并获取列表最后一个元素
 15.	RPOPLPUSH source destination 
@@ -1454,7 +1454,7 @@ public class PrintABC {
 * List
 * Set
 * Key
-#### 3.Redis 的使用要注意什么,讲讲持久化方式,内存设置,集群的应用和优劣势,淘汰策略等。
+#### 3.Redis 的使用要注意什么,讲讲持久化方式,内存设置,集群的应用和优劣势,淘汰策略等.
 #### 4.redis2 和 redis3 的区别,redis3 内部通讯机制
 #### 5.当前 redis 集群有哪些玩法,各自优缺点,场景
 #### 6.Memcache 的原理,哪些数据适合放在缓存中
