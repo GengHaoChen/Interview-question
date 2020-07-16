@@ -1220,6 +1220,48 @@ public class PrintABC {
 #### 6.有 3n+1 个数字,其中 3n 个中是重复的,只有 1 个是不重复的,怎么找出来
 #### 7.写一个字符串反转函数
 #### 8.常用的排序算法,快排,归并、冒泡. 快排的最优时间复杂度,最差复杂度.冒泡排序的优化方案
+##### 快速排序
+```` java
+// 通过从右向左与从左向右扫描交换数据进行元址排序
+private static void quickSort(int[] arr, int start, int end) {
+    if (start < end) {
+        int left = start; // 左侧浮标
+        int right = end; // 右侧浮标
+        int key = arr[start];// 设置标志位
+        // 左侧浮标向右移动,右侧浮标向左移动进行扫描排序
+        while (left < right) {
+            // 从右起找到第一个比标志位大的
+            while (right > left && arr[right] >= key) {
+                right--; // 如果没有找到右侧浮标向左移动一位
+            }
+            
+            // 将右边放置到左边
+            arr[left] = arr[right];
+
+             // 从左起找到第一个比标志位小的
+            while (left < right && arr[left] <= key) {
+                left++; // 如果当前没有找到左侧浮标向右移动一位
+            }
+            // 将左边放置到右边
+            arr[right] = arr[left];
+        }
+
+        // 重制标志位
+        arr[left] = key;
+
+        // 从左向右进行再次排序
+        quickSort(arr, start, left - 1);
+        // 从右向左进行再次排序
+        quickSort(arr, right + 1, end);
+    }
+}
+````
+1. 扫描必须从右向左开始,如果从左向右进行扫描会出现因为左边浮标到达最后右边最后一位右边无法开始扫描导致最后一位无法被扫描到的问题
+
+###### 归并排序
+```` java
+
+````
 #### 9.二分查找的时间复杂度,优势
 #### 10.一个已经构建好的 TreeSet,怎么完成倒排序
 #### 11.什么是 B+树,B-树,列出实际的使用场景
