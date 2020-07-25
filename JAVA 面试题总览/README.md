@@ -1260,6 +1260,35 @@ private static void quickSort(int[] arr, int start, int end) {
 
 ###### 归并排序
 ```` java
+private static int[] mergeSort(int[] arr, int start, int end) {
+    if (start == end) {
+        return new int[]{arr[start]};
+    }
+
+    int mid = (start + end) / 2;
+    int[] leftArr = mergeSort(arr, start, mid);
+    int[] rightArr = mergeSort(arr, mid + 1, end);
+    return merge(leftArr, rightArr);
+}
+
+private static int[] merge(int[] leftArr, int[] rightArr) {
+    int[] mergedArr = new int[leftArr.length + rightArr.length];
+    int m = 0, i = 0, j = 0;
+    while (i < leftArr.length && j < rightArr.length) {
+        mergedArr[m++] = leftArr[i] < rightArr[j] ? leftArr[i++] : rightArr[j++];
+    }
+    while (i < leftArr.length) {
+        mergedArr[m++] = leftArr[i++];
+    }
+    while (j < rightArr.length) {
+        mergedArr[m++] = rightArr[j++];
+    }
+    return mergedArr;
+}
+````
+
+##### 冒泡排序
+```` java
 
 ````
 #### 9.二分查找的时间复杂度,优势
