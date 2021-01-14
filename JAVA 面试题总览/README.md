@@ -1260,20 +1260,27 @@ private static void quickSort(int[] arr, int start, int end) {
 
 ###### 归并排序
 ```` java
+// 分治法排序
+// 1.拆分: 将每一个数组进行中位拆分
+// 2.治理: 将拆分后的数组进行排序
+// 3.合并: 将排序后的小数组进行合并
 private static int[] mergeSort(int[] arr, int start, int end) {
     if (start == end) {
         return new int[]{arr[start]};
     }
 
+    // 将数组从中间拆分成两个小数组
     int mid = (start + end) / 2;
     int[] leftArr = mergeSort(arr, start, mid);
     int[] rightArr = mergeSort(arr, mid + 1, end);
     return merge(leftArr, rightArr);
 }
 
+// 合并拆分排序之后的数组
 private static int[] merge(int[] leftArr, int[] rightArr) {
     int[] mergedArr = new int[leftArr.length + rightArr.length];
     int m = 0, i = 0, j = 0;
+    // 将两个排序后的数组进行再次排序并放入一个新的数组中
     while (i < leftArr.length && j < rightArr.length) {
         mergedArr[m++] = leftArr[i] < rightArr[j] ? leftArr[i++] : rightArr[j++];
     }
@@ -1290,6 +1297,10 @@ private static int[] merge(int[] leftArr, int[] rightArr) {
 ##### 冒泡排序
 ```` java
 
+````
+
+##### 冒泡排序优化
+```` java
 ````
 #### 9.二分查找的时间复杂度,优势
 #### 10.一个已经构建好的 TreeSet,怎么完成倒排序
